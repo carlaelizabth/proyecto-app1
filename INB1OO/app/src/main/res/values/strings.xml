@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">INB1OO</string>
+    <string name="payment">Cobro</string>
+    <string name="total">Total</string>
+    <string name="totalPay">%s</string>
+    <string name="numCard">Número de tarjeta</string>
+    <string name="validate">Válido hasta</string>
+    <string name="cvv">CVV</string>
+    <string name="mail">Correo</string>
+    <string name="pay">Pagar</string>
+    <string name="name">Nombre</string>
+    <string name="version">Versión 1.0.0</string>
+    <string name="dsLogo">Logo de INB100</string>
+
+</resources>
