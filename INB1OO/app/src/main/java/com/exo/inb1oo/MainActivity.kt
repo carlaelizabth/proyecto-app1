@@ -2,6 +2,9 @@ package com.exo.inb1oo
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -31,11 +34,32 @@ class MainActivity : AppCompatActivity() {
             }*/
 
         }
+
+        val typeCardsList = listOf(R.drawable.amexpress_logo,R.drawable.mastercard_logo,R.drawable.visa_logo)
+
+        val adapter = TypeCardAdapter(this, typeCardsList)
+        binding.spTypeCard.adapter = adapter
+
+        binding.spTypeCard.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedItem = typeCardsList[position]
+                Toast.makeText(this@MainActivity,"Selected: $selectedItem",Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+        }
     }
 
 
-    private fun randomPrice(): Int {
-            return Random.nextInt(100, 501)
+    private fun randomPrice(): String {
+            return Random.nextInt(100, 501).toString()
     }
 
 }
