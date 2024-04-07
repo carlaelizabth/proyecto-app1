@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.exo.inb1oo.databinding.ActivityMainBinding
 import kotlin.concurrent.thread
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,9 +33,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun randomPrice():Int{
-        val price: Int
-        price = 0
-        return price
+
+    private fun randomPrice(): Int {
+            return Random.nextInt(100, 501)
     }
+
 }
