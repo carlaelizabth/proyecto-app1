@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.exo.inb1oo.databinding.ActivityMainBinding
+import java.text.DecimalFormat
 import kotlin.concurrent.thread
 import kotlin.random.Random
 
@@ -58,8 +59,12 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
+
     private fun randomPrice(): String {
-            return Random.nextInt(100, 501).toString()
+        val randomPrice = Random.nextDouble(100.0, 501.0)
+        val priceFormat = DecimalFormat("###.##")
+        return priceFormat.format(randomPrice)
     }
 
 }

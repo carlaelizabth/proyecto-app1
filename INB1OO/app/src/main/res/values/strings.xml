@@ -2,7 +2,7 @@
     <string name="app_name">INB1OO</string>
     <string name="payment">Cobro</string>
     <string name="total">Total</string>
-    <string name="totalPay">%s</string>
+    <string name="totalPay">$%s</string>
     <string name="numCard">Número de tarjeta</string>
     <string name="validate">Válido hasta</string>
     <string name="cvv">CVV</string>
