@@ -7,8 +7,19 @@
     <string name="validate">Válido hasta</string>
     <string name="cvv">CVV</string>
     <string name="mail">Correo</string>
+    <string name="red">Red</string>
     <string name="pay">Pagar</string>
     <string name="name">Nombre</string>
+    <string name="fMonth">MM</string>
+    <string name="formatDate">/</string>
+    <string name="fYear">YY</string>
+    <string name="enterName">Ingresa el nombre</string>
+    <string name="enterNumCard">Ingrese un número de tarjeta válido</string>
+    <string name="enterExMonth">Ingrese un mes válido</string>
+    <string name="enterExYear">Ingrese un año válido</string>
+    <string name="enterCVV">Ingrese un CVV válido</string>
+    <string name="enterMail">Ingrese un correo válido</string>
+    <string name="correctData">Por favor corrige tus datos</string>
     <string name="version">Versión 1.0.0</string>
     <string name="dsLogo">Logo de INB100</string>
 
