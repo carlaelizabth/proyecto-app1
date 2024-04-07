@@ -96,7 +96,7 @@
         app:layout_constraintGuide_begin="20dp" />
 
     <Button
-        android:id="@+id/btnCobro"
+        android:id="@+id/btnPay"
         android:layout_width="171dp"
         android:layout_height="53dp"
         android:backgroundTint="@color/teal"
