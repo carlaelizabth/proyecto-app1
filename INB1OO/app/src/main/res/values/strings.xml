@@ -22,5 +22,8 @@
     <string name="correctData">Por favor corrige tus datos</string>
     <string name="version">Versión 1.0.0</string>
     <string name="dsLogo">Logo de INB100</string>
+    <string name="type_card">Red de pago</string>
+    <string name="clientName">%s:</string>
+    <string name="payApproved">Has pagado $%s de tu tarjeta $s </string>
 
 </resources>

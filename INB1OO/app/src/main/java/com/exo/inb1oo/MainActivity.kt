@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.exo.inb1oo.databinding.ActivityMainBinding
@@ -53,9 +54,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnPay.setOnClickListener{
             if(areValidData()) {
-
-                //view->
                 val intent = Intent(this@MainActivity, MainActivity2::class.java)
+                val parameters = bundleOf(
+                    "name" to binding.etName.text.toString(),
+                    "numCard" to binding.etNumCard.text,
+                    "payment" to payment,
+                    "email" to binding.etMail
+                )
+           /*     intent.apply{
+                    putExtras(parameters)
+                }*/
                 startActivity(intent)
             }
         }
@@ -101,20 +109,24 @@ class MainActivity : AppCompatActivity() {
         val currentYearS = currentDateS.get(Calendar.YEAR)%100
         val currentMonthS = currentDateS.get(Calendar.MONTH)+1
 
-        if(binding.etExpiryY.text.isNotEmpty() && binding.etExpiryM.text.isNotEmpty()){
+        if(binding.etExpiryY.text.isNotEmpty() && binding.etExpiryM.text.isNotEmpty() ) {
             val year = binding.etExpiryY.text.toString().toInt()
             val month = binding.etExpiryM.text.toString().toInt()
-            if (currentYearS < year) {
-                return true
-            } else if(currentYearS == year){
-                 if (currentMonthS < month)
+            if (month in 1..12) {
+                if (currentYearS < year) {
                     return true
-                else{
-                    binding.etExpiryM.error = getString(R.string.enterExMonth)
+                } else if (currentYearS == year) {
+                    if (currentMonthS < month)
+                        return true
+                     else {
+                        binding.etExpiryM.error = getString(R.string.enterExMonth)
+                    }
+                    return false
                 }
+                binding.etExpiryY.error = getString(R.string.enterExYear)
                 return false
             }
-            binding.etExpiryY.error = getString(R.string.enterExYear)
+            binding.etExpiryM.error = getString(R.string.enterExMonth)
             return false
         }
         binding.etExpiryM.error = getString(R.string.enterExMonth)
