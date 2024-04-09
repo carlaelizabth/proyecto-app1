@@ -139,7 +139,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isValidCVV(): Boolean{
-        if (binding.etCvv.text.isNotEmpty() && binding.etCvv.text.length == 3)
+        if (binding.etCvv.text.isNotEmpty() && binding.etCvv.text.length in 3..4 )
             return true
         else
             binding.etCvv.error = getString(R.string.enterCVV)

@@ -158,7 +158,7 @@
             android:hint="@string/cvv"
             android:inputType="number"
             android:labelFor="@id/tvCvv"
-            android:maxLength="3"
+            android:maxLength="4"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
