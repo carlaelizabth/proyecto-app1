@@ -2,10 +2,8 @@ package com.exo.inb1oo
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.exo.inb1oo.databinding.ActivityMain2Binding
@@ -31,8 +29,6 @@ class MainActivity2 : AppCompatActivity() {
         var totalPayment = ""
         var numCard = ""
         var name = ""
-        var email = ""
-
 
         if (params != null) {
             name = params.getString("name", "")
@@ -49,7 +45,6 @@ class MainActivity2 : AppCompatActivity() {
             binding.tvMessageOperation.text = getString(R.string.payApproved, totalPayment, getString(R.string.stCard)+subNumCard)
         } else {
             binding.gifOperationValidate.setImageResource(R.drawable.operation_denied)
-
             binding.tvMessageOperation.text = getString(R.string.payDenied, totalPayment, getString(R.string.stCard)+subNumCard)
         }
 

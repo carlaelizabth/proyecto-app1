@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="payment">Payment</string>
+    <string name="total">Total</string>
+    <string name="numCard">Card Number</string>
+    <string name="validate">Valid until</string>
+    <string name="mail">Email</string>
+    <string name="red">Payment Network</string>
+    <string name="pay">Pay</string>
+    <string name="name">Name</string>
+    <string name="enterName">Enter a valid name</string>
+    <string name="enterNumCard">Enter a valid number card</string>
+    <string name="enterExMonth">Enter a valid month</string>
+    <string name="enterExYear">Enter a valid year</string>
+    <string name="enterCVV">Enter a valid CVV</string>
+    <string name="enterMail">Enter a valid email</string>
+    <string name="correctData">Please correct your data</string>
+    <string name="version">Version 1.0.0</string>
+    <string name="dsLogo">INB100\'s logo</string>
+    <string name="type_card">Payment Network</string>
+    <string name="payApproved">You have paid $%1$s from your card %2$s</string>
+    <string name="payDenied">The payment of $%s from your card %s has been rejected</string>
+    <string name="spError">Error: You did not select an item from the list</string>
+    <string name="btnDone">Done</string>
+</resources>

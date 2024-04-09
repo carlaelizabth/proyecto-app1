@@ -63,8 +63,7 @@ class MainActivity : AppCompatActivity() {
                 val parameters = bundleOf(
                     "name" to binding.etName.text.toString(),
                     "numCard" to binding.etNumCard.text.toString(),
-                    "payment" to payment,
-                    "email" to binding.etMail.text.toString()
+                    "payment" to payment
                 )
                 intent.apply{
                     putExtras(parameters)
