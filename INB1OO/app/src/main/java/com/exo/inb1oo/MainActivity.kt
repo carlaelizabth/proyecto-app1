@@ -12,6 +12,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.exo.inb1oo.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 import java.text.DecimalFormat
 import kotlin.random.Random
 
@@ -31,10 +32,12 @@ class MainActivity : AppCompatActivity() {
         val payment = randomPrice()
         binding.tvTotalPayment.text=getString(R.string.totalPay, payment)
 
-        val typeCardsList = listOf(R.drawable.amexpress_logo,R.drawable.mastercard_logo,R.drawable.visa_logo)
+        val typeCardsList = listOf(R.drawable.not_selection,R.drawable.amexpress_logo,R.drawable.mastercard_logo,R.drawable.visa_logo)
 
         val adapter = TypeCardAdapter(this, typeCardsList)
         binding.spTypeCard.adapter = adapter
+
+        var isSelectedItem = false
 
         binding.spTypeCard.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
@@ -43,27 +46,29 @@ class MainActivity : AppCompatActivity() {
                 position: Int,
                 id: Long
             ) {
-                val selectedItem = typeCardsList[position]
-                Toast.makeText(this@MainActivity,"Selected: $selectedItem",Toast.LENGTH_SHORT).show()
+                isSelectedItem = false
+                val idSelectedItem = adapter.getItemId(position)
+                if(idSelectedItem in 1..3){
+                    isSelectedItem = true
+                }
             }
-
             override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("Not yet implemented")
+                Toast.makeText(this@MainActivity, "No item selected", Toast.LENGTH_SHORT).show()
             }
         }
 
         binding.btnPay.setOnClickListener{
-            if(areValidData()) {
+            if(areValidData(isSelectedItem)) {
                 val intent = Intent(this@MainActivity, MainActivity2::class.java)
                 val parameters = bundleOf(
                     "name" to binding.etName.text.toString(),
-                    "numCard" to binding.etNumCard.text,
+                    "numCard" to binding.etNumCard.text.toString(),
                     "payment" to payment,
-                    "email" to binding.etMail
+                    "email" to binding.etMail.text.toString()
                 )
-           /*     intent.apply{
+                intent.apply{
                     putExtras(parameters)
-                }*/
+                }
                 startActivity(intent)
             }
         }
@@ -142,8 +147,16 @@ class MainActivity : AppCompatActivity() {
         return false
     }
 
-    private fun areValidData(): Boolean{
-        if(isValidName() and isValidNumCard() and isValidDate() and isValidCVV() and isValidEmail(binding.etMail.text.toString())) {
+    private fun isSpSelected(isSelected: Boolean): Boolean{
+        if (isSelected)
+            return true
+        else
+            Snackbar.make(binding.root, getString(R.string.spError), Snackbar.LENGTH_SHORT).show()
+        return false
+    }
+
+    private fun areValidData(isSelected: Boolean): Boolean{
+        if(isValidName() and isValidNumCard() and isValidDate() and isValidCVV() and isValidEmail(binding.etMail.text.toString()) and isSpSelected(isSelected)) {
             return true
         } else
             Toast.makeText(this,resources.getString(R.string.correctData),Toast.LENGTH_LONG).show()

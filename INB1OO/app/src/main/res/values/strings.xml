@@ -13,7 +13,7 @@
     <string name="fMonth">MM</string>
     <string name="formatDate">/</string>
     <string name="fYear">YY</string>
-    <string name="enterName">Ingresa el nombre</string>
+    <string name="enterName">Ingrese un nombre válido</string>
     <string name="enterNumCard">Ingrese un número de tarjeta válido</string>
     <string name="enterExMonth">Ingrese un mes válido</string>
     <string name="enterExYear">Ingrese un año válido</string>
@@ -24,6 +24,9 @@
     <string name="dsLogo">Logo de INB100</string>
     <string name="type_card">Red de pago</string>
     <string name="clientName">%s:</string>
-    <string name="payApproved">Has pagado $%s de tu tarjeta $s </string>
-
+    <string name="payApproved">Has pagado $%1$s de tu tarjeta %2$s </string>
+    <string name="payDenied">El pago por $%s de tu tarjeta %s ha sido rechazado. </string>
+    <string name="spError">Error: No seleccionaste un elemento de la lista</string>
+    <string name="btnDone">Hecho</string>
+    <string name="stCard">************</string>
 </resources>

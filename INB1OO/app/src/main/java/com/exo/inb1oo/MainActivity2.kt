@@ -1,18 +1,25 @@
 package com.exo.inb1oo
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import java.text.DecimalFormat
+import com.exo.inb1oo.databinding.ActivityMain2Binding
 import kotlin.random.Random
 
 class MainActivity2 : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMain2Binding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMain2Binding.inflate(layoutInflater)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main2)
+        setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -21,17 +28,34 @@ class MainActivity2 : AppCompatActivity() {
 
         val params = intent.extras
 
-        if (params!=null){
-            val name = params.getString("name","")
-            val numCard = params.getInt("numCard",0)
-            val totalPayment = params.getInt("payment",0)
-            val email = params.getString("email","")
+        var totalPayment = ""
+        var numCard = ""
+        var name = ""
+        var email = ""
+
+
+        if (params != null) {
+            name = params.getString("name", "")
+            numCard = params.getString("numCard", "")
+            totalPayment = params.getString("payment", "")
         }
 
         val approved = operationApproved()
+        val subNumCard = numCard.substring(12)
 
-        if (approved in 1 .. 3){
+        binding.tvName.text = name
+        if (approved in 1..3) {
+            binding.gifOperationValidate.setImageResource(R.drawable.operation_approved)
+            binding.tvMessageOperation.text = getString(R.string.payApproved, totalPayment, getString(R.string.stCard)+subNumCard)
+        } else {
+            binding.gifOperationValidate.setImageResource(R.drawable.operation_denied)
 
+            binding.tvMessageOperation.text = getString(R.string.payDenied, totalPayment, getString(R.string.stCard)+subNumCard)
+        }
+
+        binding.btnDone.setOnClickListener {
+            val intent = Intent(this@MainActivity2, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 
